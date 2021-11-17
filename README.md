@@ -33,3 +33,5 @@
 | price             | number | null: false |
 
 ### Association
+
+- belongs_to :user
