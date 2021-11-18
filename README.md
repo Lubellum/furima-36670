@@ -30,7 +30,7 @@
 | delivery_fee_load | string | null: false |
 | ship_from_address | string | null: false |
 | ship_to_duration  | string | null: false |
-| price             | number | null: false |
+| price             | int    | null: false |
 
 ### Association
 
