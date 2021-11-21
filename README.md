@@ -57,14 +57,14 @@
 
 ## mailing_address テーブル
 
-| Column           | Type   | Options     |
-| -----------------| ------ | ----------- |
-| postal_code      | int    | null: false |
-| prefectures      | string | null: false |
-| municipalities   | string | null: false |
-| street_number    | int    | null: false |
-| building_name    | string |             |
-| telephone_number | int    | null: false |
+| Column           | Type    | Options     |
+| -----------------| ------- | ----------- |
+| postal_code      | string  | null: false |
+| prefectures      | integer | null: false |
+| municipalities   | string  | null: false |
+| street_number    | string  | null: false |
+| building_name    | string  |             |
+| telephone_number | string  | null: false |
 
 ### Association
 
