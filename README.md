@@ -22,16 +22,17 @@
 
 ## items テーブル
 
-| Column               | Type    | Options                        |
-| -------------------- | ------- | ------------------------------ |
-| item_name            | string  | null: false                    |
-| explanation          | text    | null: false                    |
-| category             | integer | null: false, foreign_key: true |
-| condition            | integer | null: false, foreign_key: true |
-| delivery_fee_payment | integer | null: false, foreign_key: true |
-| ship_from_address    | integer | null: false, foreign_key: true |
-| ship_to_duration     | integer | null: false, foreign_key: true |
-| price                | integer | null: false                    |
+| Column               | Type      | Options                        |
+| -------------------- | ------- --| ------------------------------ |
+| item_name            | string    | null: false                    |
+| explanation          | text      | null: false                    |
+| category             | integer   | null: false, foreign_key: true |
+| condition            | integer   | null: false, foreign_key: true |
+| delivery_fee_payment | integer   | null: false, foreign_key: true |
+| ship_from_address    | integer   | null: false, foreign_key: true |
+| ship_to_duration     | integer   | null: false, foreign_key: true |
+| price                | integer   | null: false                    |
+| user_id              | reference | null: false                    |
 
 ### Association
 
