@@ -58,14 +58,16 @@
 
 ## mailing_address テーブル
 
-| Column           | Type    | Options     |
-| -----------------| ------- | ----------- |
-| postal_code      | string  | null: false |
-| prefectures      | integer | null: false |
-| municipalities   | string  | null: false |
-| street_number    | string  | null: false |
-| building_name    | string  |             |
-| telephone_number | string  | null: false |
+| Column           | Type      | Options     |
+| -----------------| --------- | ----------- |
+| postal_code      | string    | null: false |
+| prefectures      | integer   | null: false |
+| municipalities   | string    | null: false |
+| street_number    | string    | null: false |
+| building_name    | string    |             |
+| telephone_number | string    | null: false |
+| user_id          | reference | null: false |
+| item_id          | reference | null: false |
 
 ### Association
 
