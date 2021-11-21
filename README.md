@@ -42,10 +42,10 @@
 
 ## purchase＿records テーブル
 
-| Column  | Type   | Options     |
-| ------- | ------ | ----------- |
-| user_id | string | null: false |
-| item_id | string | null: false |
+| Column  | Type      | Options     |
+| ------- | --------- | ----------- |
+| user_id | reference | null: false |
+| item_id | reference | null: false |
 
 ### Association
 
