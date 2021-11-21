@@ -71,4 +71,4 @@
 
 ### Association
 
-has_one :purchase＿records
+- belongs_to :purchase＿records
