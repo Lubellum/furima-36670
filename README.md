@@ -16,6 +16,7 @@
 ### Association
 
 - has_many :items
+- has_many :purchase＿records
 
 
 
@@ -35,6 +36,7 @@
 ### Association
 
 - belongs_to :user
+- has_many :purchase＿records
 
 
 
