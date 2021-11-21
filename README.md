@@ -51,3 +51,21 @@
 
 - belongs_to :user
 - belongs_to :item
+
+
+
+## mailing_address テーブル
+
+| Column           | Type   | Options     |
+| -----------------| ------ | ----------- |
+| postal_code      | int    | null: false |
+| prefectures      | string | null: false |
+| municipalities   | string | null: false |
+| street_number    | int    | null: false |
+| building_name    | string |             |
+| telephone_number | int    | null: false |
+
+### Association
+
+has_one :user
+has_one :item
