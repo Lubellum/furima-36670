@@ -2,16 +2,16 @@
 
 ## users テーブル
 
-| Column              | Type   | Options                   |
-| ------------------- | ------ | ------------------------- |
-| nickname            | string | null: false               |
-| email               | string | null: false, unique: true |
-| encrypted_password  | string | null: false               |
-| first_name_kanji    | string | null: false               |
-| last_name_kanji     | string | null: false               |
-| first_name_katakana | string | null: false               |
-| last_name_katakana  | string | null: false               |
-| birth_date          | date   | null: false               |
+| Column               | Type      | Options                        |
+| -------------------  | --------- | ------------------------------ |
+| nickname             | string    | null: false                    |
+| email                | string    | null: false, unique: true      |
+| encrypted_password   | string    | null: false                    |
+| first_name_kanji     | string    | null: false                    |
+| last_name_kanji      | string    | null: false                    |
+| first_name_katakana  | string    | null: false                    |
+| last_name_katakana   | string    | null: false                    |
+| birth_date           | date      | null: false                    |
 
 ### Association
 
@@ -23,7 +23,7 @@
 ## items テーブル
 
 | Column               | Type      | Options                        |
-| -------------------- | ------- --| ------------------------------ |
+| -------------------- | --------- | ------------------------------ |
 | item_name            | string    | null: false                    |
 | explanation          | text      | null: false                    |
 | category             | integer   | null: false, foreign_key: true |
@@ -43,10 +43,10 @@
 
 ## purchase＿records テーブル
 
-| Column  | Type      | Options     |
-| ------- | --------- | ----------- |
-| user_id | reference | null: false |
-| item_id | reference | null: false |
+| Column               | Type      | Options                        |
+| -------------------- | --------- | ------------------------------ |
+| user_id              | reference | null: false                    |
+| item_id              | reference | null: false                    |
 
 ### Association
 
@@ -58,16 +58,16 @@
 
 ## mailing_address テーブル
 
-| Column           | Type      | Options     |
-| -----------------| --------- | ----------- |
-| postal_code      | string    | null: false |
-| prefectures      | integer   | null: false |
-| municipalities   | string    | null: false |
-| street_number    | string    | null: false |
-| building_name    | string    |             |
-| telephone_number | string    | null: false |
-| user_id          | reference | null: false |
-| item_id          | reference | null: false |
+| Column               | Type      | Options                        |
+| -------------------- | --------- | ------------------------------ |
+| postal_code          | string    | null: false                    |
+| prefectures          | integer   | null: false                    |
+| municipalities       | string    | null: false                    |
+| street_number        | string    | null: false                    |
+| building_name        | string    |                                |
+| telephone_number     | string    | null: false                    |
+| user_id              | reference | null: false                    |
+| item_id              | reference | null: false                    |
 
 ### Association
 
