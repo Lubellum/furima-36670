@@ -61,7 +61,7 @@
 | Column                  | Type      | Options                        |
 | ----------------------- | --------- | ------------------------------ |
 | postal_code             | string    | null: false                    |
-| prefectures             | integer   | null: false                    |
+| ship_from_address_id    | integer   | null: false                    |
 | municipalities          | string    | null: false                    |
 | street_number           | string    | null: false                    |
 | building_name           | string    |                                |
