@@ -66,7 +66,6 @@
 | street_number           | string    | null: false                    |
 | building_name           | string    |                                |
 | telephone_number        | string    | null: false                    |
-| user                    | references | null: false                    |
 | item                    | references | null: false                    |
 
 ### Association
