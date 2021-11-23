@@ -56,7 +56,7 @@
 
 
 
-## mailing_address テーブル
+## mailing_addresses テーブル
 
 | Column                  | Type       | Options                        |
 | ----------------------- | ---------- | ------------------------------ |
