@@ -26,11 +26,11 @@
 | ----------------------- | ---------- | ------------------------------ |
 | item_name               | string     | null: false                    |
 | explanation             | text       | null: false                    |
-| category_id             | integer    | null: false, foreign_key: true |
-| condition_id            | integer    | null: false, foreign_key: true |
-| delivery_fee_payment_id | integer    | null: false, foreign_key: true |
-| ship_from_address_id    | integer    | null: false, foreign_key: true |
-| ship_to_duration_id     | integer    | null: false, foreign_key: true |
+| category_id             | integer    | null: false                    |
+| condition_id            | integer    | null: false                    |
+| delivery_fee_payment_id | integer    | null: false                    |
+| ship_from_address_id    | integer    | null: false                    |
+| ship_to_duration_id     | integer    | null: false                    |
 | price                   | integer    | null: false                    |
 | user                    | references | null: false                    |
 
