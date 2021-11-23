@@ -32,7 +32,7 @@
 | ship_from_address_id    | integer    | null: false                    |
 | ship_to_duration_id     | integer    | null: false                    |
 | price                   | integer    | null: false                    |
-| user                    | references | null: false                    |
+| user                    | references | null: false, foreign_key: true |
 
 ### Association
 
