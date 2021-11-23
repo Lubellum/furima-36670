@@ -70,4 +70,4 @@
 
 ### Association
 
-- belongs_to :purchase＿records
+- belongs_to :purchase＿record
