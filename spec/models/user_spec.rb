@@ -42,13 +42,11 @@ RSpec.describe User, type: :model do
       it 'パスワードは、半角英数字混合での入力が必須である(英字のみ)' do
         @user.password = 'abcdef'
         @user.valid?
-        binding.pry
         expect(@user.errors.full_messages).to include("Password is invalid. Include both letters and numbers")
       end
       it 'パスワードは、半角英数字混合での入力が必須である(数字のみ)' do
         @user.password = '123456'
         @user.valid?
-        binding.pry
         expect(@user.errors.full_messages).to include("Password is invalid. Include both letters and numbers")
       end
       it 'パスワードとパスワード（確認）は、値の一致が必須である' do
