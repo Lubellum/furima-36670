@@ -53,13 +53,15 @@ RSpec.describe User, type: :model do
         @user.password = '123abc' 
         @user.password_confirmation = '456def'
         @user.valid?
-        binding.pry
         expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
       end
     end
-
+    
     context '本人確認情報' do
-      it 'お名前(全角)は、名字と名前がそれぞれ必須である' do
+      it 'お名前(全角)は、名字と名前がそれぞれ必須である(名字のみ)' do
+        binding.pry
+      end
+      it 'お名前(全角)は、名字と名前がそれぞれ必須である(名前のみ)' do
         
       end
       it 'お名前(全角)は、全角（漢字・ひらがな・カタカナ）での入力が必須である' do
