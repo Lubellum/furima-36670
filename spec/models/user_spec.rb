@@ -79,7 +79,10 @@ RSpec.describe User, type: :model do
         binding.pry
         expect(@user.errors.full_messages).to include("Last name kanji is invalid. Input full-width characters")
       end
-      it 'お名前カナ(全角)は、名字と名前がそれぞれ必須である' do
+      it 'お名前カナ(全角)は、名字と名前がそれぞれ必須である(名字のみ)' do
+        
+      end
+      it 'お名前カナ(全角)は、名字と名前がそれぞれ必須である(名前のみ)' do
         
       end
       it 'お名前カナ(全角)は、全角（カタカナ）での入力が必須である(名字)' do
