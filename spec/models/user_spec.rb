@@ -96,11 +96,12 @@ RSpec.describe User, type: :model do
       it 'お名前カナ(全角)は、全角（カタカナ）での入力が必須である(名前)' do
         @user.last_name_katakana = 'ｱｲｳｴｵｶ'
         @user.valid?
-        binding.pry
         expect(@user.errors.full_messages).to include("Last name katakana is invalid. Input full-width katakana characters")
       end
       it '生年月日が必須である' do
-        
+        @user.birth_date = ''
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Birth date can't be blank")
       end
     end
   end
