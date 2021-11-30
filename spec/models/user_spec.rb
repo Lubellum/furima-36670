@@ -10,11 +10,13 @@ RSpec.describe User, type: :model do
       it 'ニックネームが必須である' do
         @user.nickname = ''
         @user.valid?
-        binding.pry
         expect(@user.errors.full_messages).to include("Nickname can't be blank")
       end
       it 'メールアドレスが必須である' do
-        
+        @user.email = ''
+        @user.valid?
+        binding.pry
+        expect(@user.errors.full_messages).to include("Email can't be blank")
       end
       it 'メールアドレスが一意性である' do
         
