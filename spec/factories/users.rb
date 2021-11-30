@@ -10,6 +10,6 @@ FactoryBot.define do
     last_name_kanji       {japanese_user.last.kanji}
     first_name_katakana   {japanese_user.first.katakana}
     last_name_katakana    {japanese_user.last.katakana}
-    birth_date            {Faker::Time}
+    birth_date            {Faker::Date.between(from: '1930-01-01', to: Date.today)}
   end
 end
