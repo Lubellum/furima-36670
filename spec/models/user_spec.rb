@@ -22,11 +22,13 @@ RSpec.describe User, type: :model do
         another_user = FactoryBot.build(:user)
         another_user.email = @user.email
         another_user.valid?
-        binding.pry
         expect(another_user.errors.full_messages).to include("Email has already been taken")
       end
       it 'メールアドレスは、@を含む必要がある' do
-        
+        @user.email = 'test.com'
+        @user.valid?
+        binding.pry
+        expect(@user.errors.full_messages).to include("Email is invalid")
       end
       it 'パスワードが必須である' do
         
