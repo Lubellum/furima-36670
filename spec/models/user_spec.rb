@@ -86,14 +86,18 @@ RSpec.describe User, type: :model do
       it 'お名前カナ(全角)は、名字と名前がそれぞれ必須である(名前のみ)' do
         @user.first_name_katakana = ''
         @user.valid?
-        binding.pry
         expect(@user.errors.full_messages).to include("First name katakana can't be blank")
       end
       it 'お名前カナ(全角)は、全角（カタカナ）での入力が必須である(名字)' do
-        
+        @user.first_name_katakana = 'ｱｲｳｴｵｶ'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First name katakana is invalid. Input full-width katakana characters")
       end
       it 'お名前カナ(全角)は、全角（カタカナ）での入力が必須である(名前)' do
-        
+        @user.last_name_katakana = 'ｱｲｳｴｵｶ'
+        @user.valid?
+        binding.pry
+        expect(@user.errors.full_messages).to include("Last name katakana is invalid. Input full-width katakana characters")
       end
       it '生年月日が必須である' do
         
