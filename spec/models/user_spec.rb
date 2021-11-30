@@ -66,10 +66,15 @@ RSpec.describe User, type: :model do
       it 'お名前(全角)は、名字と名前がそれぞれ必須である(名前のみ)' do
         @user.first_name_kanji = ''
         @user.valid?
-        binding.pry
         expect(@user.errors.full_messages).to include("First name kanji can't be blank")
       end
-      it 'お名前(全角)は、全角（漢字・ひらがな・カタカナ）での入力が必須である' do
+      it 'お名前(全角)は、全角（漢字・ひらがな・カタカナ）での入力が必須である(漢字)' do
+        
+      end
+      it 'お名前(全角)は、全角（漢字・ひらがな・カタカナ）での入力が必須である(ひらがな)' do
+        
+      end
+      it 'お名前(全角)は、全角（漢字・ひらがな・カタカナ）での入力が必須である(カタカナ)' do
         
       end
       it 'お名前カナ(全角)は、名字と名前がそれぞれ必須である' do
