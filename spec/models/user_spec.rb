@@ -27,11 +27,13 @@ RSpec.describe User, type: :model do
       it 'メールアドレスは、@を含む必要がある' do
         @user.email = 'test.com'
         @user.valid?
-        binding.pry
         expect(@user.errors.full_messages).to include("Email is invalid")
       end
       it 'パスワードが必須である' do
-        
+        @user.password = ''
+        @user.valid?
+        binding.pry
+        expect(@user.errors.full_messages).to include("Password can't be blank")
       end
       it 'パスワードは、6文字以上での入力が必須である' do
         
