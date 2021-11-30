@@ -32,11 +32,13 @@ RSpec.describe User, type: :model do
       it 'パスワードが必須である' do
         @user.password = ''
         @user.valid?
-        binding.pry
         expect(@user.errors.full_messages).to include("Password can't be blank")
       end
       it 'パスワードは、6文字以上での入力が必須である' do
-        
+        @user.password = '12345'
+        @user.valid?
+        binding.pry
+        expect(@user.errors.full_messages).to include("Password is too short (minimum is 6 characters)")
       end
       it 'パスワードは、半角英数字混合での入力が必須である' do
         
