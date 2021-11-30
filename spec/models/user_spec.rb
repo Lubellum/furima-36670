@@ -50,7 +50,11 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include("Password is invalid. Include both letters and numbers")
       end
       it 'パスワードとパスワード（確認）は、値の一致が必須である' do
-        
+        @user.password = '123abc' 
+        @user.password_confirmation = '456def'
+        @user.valid?
+        binding.pry
+        expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
       end
     end
 
