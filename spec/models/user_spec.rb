@@ -37,10 +37,12 @@ RSpec.describe User, type: :model do
       it 'パスワードは、6文字以上での入力が必須である' do
         @user.password = '12345'
         @user.valid?
-        binding.pry
         expect(@user.errors.full_messages).to include("Password is too short (minimum is 6 characters)")
       end
-      it 'パスワードは、半角英数字混合での入力が必須である' do
+      it 'パスワードは、半角英数字混合での入力が必須である(英字のみ)' do
+        binding.pry
+      end
+      it 'パスワードは、半角英数字混合での入力が必須である(数字のみ)' do
         
       end
       it 'パスワードとパスワード（確認）は、値の一致が必須である' do
