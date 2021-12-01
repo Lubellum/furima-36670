@@ -7,6 +7,9 @@ RSpec.describe User, type: :model do
 
   describe 'ユーザー新規登録' do
     context 'ユーザー情報' do
+      it 'ニックネーム、パスワード、パスワード(確認)、お名前(全角、名字/名前)、お名前カナ(全角、名字/名前)、生年月日が含まれていればユーザー登録が出来る' do
+        expect(@user).to be_valid
+      end
       it 'ニックネームが必須である' do
         @user.nickname = ''
         @user.valid?
