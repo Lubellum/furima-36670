@@ -6,66 +6,71 @@ RSpec.describe User, type: :model do
   end
 
   describe 'ユーザー新規登録' do
-    context 'ユーザー情報' do
-      it 'ニックネーム、パスワード、パスワード(確認)、お名前(全角、名字/名前)、お名前カナ(全角、名字/名前)、生年月日が含まれていればユーザー登録が出来る' do
-        expect(@user).to be_valid
+    describe 'ユーザー情報' do
+      context 'ユーザー登録が出来る時' do
+        it 'ニックネーム、パスワード、パスワード(確認)、お名前(全角、名字/名前)、お名前カナ(全角、名字/名前)、生年月日が含まれていればユーザー登録が出来る' do
+          expect(@user).to be_valid
+        end
       end
-      it 'ニックネームが必須である' do
-        @user.nickname = ''
-        @user.valid?
-        expect(@user.errors.full_messages).to include("Nickname can't be blank")
-      end
-      it 'メールアドレスが必須である' do
-        @user.email = ''
-        @user.valid?
-        expect(@user.errors.full_messages).to include("Email can't be blank")
-      end
-      it 'メールアドレスが一意性である' do
-        @user.save
-        another_user = FactoryBot.build(:user)
-        another_user.email = @user.email
-        another_user.valid?
-        expect(another_user.errors.full_messages).to include('Email has already been taken')
-      end
-      it 'メールアドレスは、@を含む必要がある' do
-        @user.email = 'test.com'
-        @user.valid?
-        expect(@user.errors.full_messages).to include('Email is invalid')
-      end
-      it 'パスワードが必須である' do
-        @user.password = ''
-        @user.valid?
-        expect(@user.errors.full_messages).to include("Password can't be blank")
-      end
-      it 'パスワードは、6文字以上での入力が必須である' do
-        @user.password = '12345'
-        @user.valid?
-        expect(@user.errors.full_messages).to include('Password is too short (minimum is 6 characters)')
-      end
-      it '全角文字を含むパスワードでは登録できない' do
-        @user.password = 'あiu123'
-        @user.valid?
-        expect(@user.errors.full_messages).to include('Password is invalid. Include both letters and numbers')
-      end
-      it 'パスワードは、半角英数字混合での入力が必須である(英字のみ)' do
-        @user.password = 'abcdef'
-        @user.valid?
-        expect(@user.errors.full_messages).to include('Password is invalid. Include both letters and numbers')
-      end
-      it 'パスワードは、半角英数字混合での入力が必須である(数字のみ)' do
-        @user.password = '123456'
-        @user.valid?
-        expect(@user.errors.full_messages).to include('Password is invalid. Include both letters and numbers')
-      end
-      it 'パスワードとパスワード（確認）は、値の一致が必須である' do
-        @user.password = '123abc'
-        @user.password_confirmation = '456def'
-        @user.valid?
-        expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
+      
+      context 'ユーザー登録が出来ない時' do
+        it 'ニックネームが必須である' do
+          @user.nickname = ''
+          @user.valid?
+          expect(@user.errors.full_messages).to include("Nickname can't be blank")
+        end
+        it 'メールアドレスが必須である' do
+          @user.email = ''
+          @user.valid?
+          expect(@user.errors.full_messages).to include("Email can't be blank")
+        end
+        it 'メールアドレスが一意性である' do
+          @user.save
+          another_user = FactoryBot.build(:user)
+          another_user.email = @user.email
+          another_user.valid?
+          expect(another_user.errors.full_messages).to include('Email has already been taken')
+        end
+        it 'メールアドレスは、@を含む必要がある' do
+          @user.email = 'test.com'
+          @user.valid?
+          expect(@user.errors.full_messages).to include('Email is invalid')
+        end
+        it 'パスワードが必須である' do
+          @user.password = ''
+          @user.valid?
+          expect(@user.errors.full_messages).to include("Password can't be blank")
+        end
+        it 'パスワードは、6文字以上での入力が必須である' do
+          @user.password = '12345'
+          @user.valid?
+          expect(@user.errors.full_messages).to include('Password is too short (minimum is 6 characters)')
+        end
+        it '全角文字を含むパスワードでは登録できない' do
+          @user.password = 'あiu123'
+          @user.valid?
+          expect(@user.errors.full_messages).to include('Password is invalid. Include both letters and numbers')
+        end
+        it 'パスワードは、半角英数字混合での入力が必須である(英字のみ)' do
+          @user.password = 'abcdef'
+          @user.valid?
+          expect(@user.errors.full_messages).to include('Password is invalid. Include both letters and numbers')
+        end
+        it 'パスワードは、半角英数字混合での入力が必須である(数字のみ)' do
+          @user.password = '123456'
+          @user.valid?
+          expect(@user.errors.full_messages).to include('Password is invalid. Include both letters and numbers')
+        end
+        it 'パスワードとパスワード（確認）は、値の一致が必須である' do
+          @user.password = '123abc'
+          @user.password_confirmation = '456def'
+          @user.valid?
+          expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
+        end
       end
     end
 
-    context '本人確認情報' do
+    describe '本人確認情報' do
       it 'お名前(全角)は、名字と名前がそれぞれ必須である(名字のみ)' do
         @user.last_name_kanji = ''
         @user.valid?
