@@ -20,13 +20,13 @@ class Item < ApplicationRecord
     validates :ship_from_address_id
     validates :ship_to_duration_id
     validates :price
+  end
 
-    with_options numericality: { other_than: 1 } do
-      validates :category_id
-      validates :condition_id
-      validates :delivery_fee_payment_id
-      validates :ship_from_address_id
-      validates :ship_to_duration_id
-    end
+  with_options numericality: { other_than: 1 } do
+    validates :category_id
+    validates :condition_id
+    validates :delivery_fee_payment_id
+    validates :ship_from_address_id
+    validates :ship_to_duration_id
   end
 end
