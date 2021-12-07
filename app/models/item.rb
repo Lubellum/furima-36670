@@ -30,5 +30,6 @@ class Item < ApplicationRecord
     validates :ship_to_duration_id
   end
 
-  validates :price, format: { with: /\A(?=.*?\d)+\z/ }
+  # validates :price, format: { with: /\A(?=.*?\d)+\z/ }
+  validates :price, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
 end
