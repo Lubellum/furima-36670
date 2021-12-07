@@ -29,4 +29,6 @@ class Item < ApplicationRecord
     validates :ship_from_address_id
     validates :ship_to_duration_id
   end
+
+  validates :price, format: { with: /\A(?=.*?\d)+\z/ }
 end
