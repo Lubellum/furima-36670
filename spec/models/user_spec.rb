@@ -12,7 +12,7 @@ RSpec.describe User, type: :model do
           expect(@user).to be_valid
         end
       end
-      
+
       context 'ユーザー登録が出来ない時' do
         it 'ニックネームが必須である' do
           @user.nickname = ''

@@ -37,27 +37,27 @@ RSpec.describe Item, type: :model do
         it '販売価格は半角数字での入力が必須である(全角数字)' do
           @item.price = '１２３４'
           @item.valid?
-          expect(@item.errors.full_messages).to include("Price is not a number")
+          expect(@item.errors.full_messages).to include('Price is not a number')
         end
         it '販売価格は半角数字での入力が必須である(半角文字)' do
           @item.price = 'abcd'
           @item.valid?
-          expect(@item.errors.full_messages).to include("Price is not a number")
+          expect(@item.errors.full_messages).to include('Price is not a number')
         end
         it '販売価格は300円〜9,999,999円の範囲での入力が必須である(300円未満)' do
           @item.price = '299'
           @item.valid?
-          expect(@item.errors.full_messages).to include("Price must be greater than or equal to 300")
+          expect(@item.errors.full_messages).to include('Price must be greater than or equal to 300')
         end
         it '販売価格は300円〜9,999,999円の範囲での入力が必須である(10,000,000円以上)' do
           @item.price = '10000000'
           @item.valid?
-          expect(@item.errors.full_messages).to include("Price must be less than or equal to 9999999")
+          expect(@item.errors.full_messages).to include('Price must be less than or equal to 9999999')
         end
         it 'userが紐付いていないと出品出来ない' do
           @item.user = nil
           @item.valid?
-          expect(@item.errors.full_messages).to include("User must exist")
+          expect(@item.errors.full_messages).to include('User must exist')
         end
       end
     end
@@ -72,12 +72,12 @@ RSpec.describe Item, type: :model do
         it 'カテゴリーの選択はidが1以外の必要がある' do
           @item.category_id = '1'
           @item.valid?
-          expect(@item.errors.full_messages).to include("Category must be other than 1")
+          expect(@item.errors.full_messages).to include('Category must be other than 1')
         end
         it 'カテゴリーの選択は数字での入力が必須' do
           @item.category_id = 'a'
           @item.valid?
-          expect(@item.errors.full_messages).to include("Category is not a number")
+          expect(@item.errors.full_messages).to include('Category is not a number')
         end
         it '商品の状態の選択が必須' do
           @item.condition_id = ''
@@ -87,12 +87,12 @@ RSpec.describe Item, type: :model do
         it '商品の状態の選択はidが1以外の必要がある' do
           @item.condition_id = '1'
           @item.valid?
-          expect(@item.errors.full_messages).to include("Condition must be other than 1")
+          expect(@item.errors.full_messages).to include('Condition must be other than 1')
         end
         it '商品の状態の選択は数字での入力が必須' do
           @item.condition_id = 'a'
           @item.valid?
-          expect(@item.errors.full_messages).to include("Condition is not a number")
+          expect(@item.errors.full_messages).to include('Condition is not a number')
         end
         it '配送料の負担の選択が必須' do
           @item.delivery_fee_payment_id = ''
@@ -102,12 +102,12 @@ RSpec.describe Item, type: :model do
         it '配送料の負担の選択はidが1以外の必要がある' do
           @item.delivery_fee_payment_id = '1'
           @item.valid?
-          expect(@item.errors.full_messages).to include("Delivery fee payment must be other than 1")
+          expect(@item.errors.full_messages).to include('Delivery fee payment must be other than 1')
         end
         it '配送料の負担の選択は数字での入力が必須' do
           @item.delivery_fee_payment_id = 'a'
           @item.valid?
-          expect(@item.errors.full_messages).to include("Delivery fee payment is not a number")
+          expect(@item.errors.full_messages).to include('Delivery fee payment is not a number')
         end
         it '発送元の地域の選択が必須' do
           @item.ship_from_address_id = ''
@@ -117,12 +117,12 @@ RSpec.describe Item, type: :model do
         it '発送元の地域の選択はidが1以外の必要がある' do
           @item.ship_from_address_id = '1'
           @item.valid?
-          expect(@item.errors.full_messages).to include("Ship from address must be other than 1")
+          expect(@item.errors.full_messages).to include('Ship from address must be other than 1')
         end
         it '発送元の地域の選択は数字での入力が必須' do
           @item.ship_from_address_id = 'a'
           @item.valid?
-          expect(@item.errors.full_messages).to include("Ship from address is not a number")
+          expect(@item.errors.full_messages).to include('Ship from address is not a number')
         end
         it '発送までの日数の選択が必須' do
           @item.ship_to_duration_id = ''
@@ -132,12 +132,12 @@ RSpec.describe Item, type: :model do
         it '発送までの日数の選択はidが1以外の必要がある' do
           @item.ship_to_duration_id = '1'
           @item.valid?
-          expect(@item.errors.full_messages).to include("Ship to duration must be other than 1")
+          expect(@item.errors.full_messages).to include('Ship to duration must be other than 1')
         end
         it '発送までの日数の選択は数字での入力が必須' do
           @item.ship_to_duration_id = 'a'
           @item.valid?
-          expect(@item.errors.full_messages).to include("Ship to duration is not a number")
+          expect(@item.errors.full_messages).to include('Ship to duration is not a number')
         end
       end
     end
