@@ -77,8 +77,13 @@ RSpec.describe Item, type: :model do
         it '商品の状態の選択が必須' do
           @item.condition_id = ''
           @item.valid?
-          binding.pry
           expect(@item.errors.full_messages).to include("Condition can't be blank")
+        end
+        it '商品の状態の選択はidが1以外の必要がある' do
+          @item.condition_id = '1'
+          @item.valid?
+          binding.pry
+          expect(@item.errors.full_messages).to include("Condition must be other than 1")
         end
       end
     end
