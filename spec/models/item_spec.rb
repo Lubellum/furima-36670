@@ -97,8 +97,13 @@ RSpec.describe Item, type: :model do
         it '配送料の負担の選択はidが1以外の必要がある' do
           @item.delivery_fee_payment_id = '1'
           @item.valid?
-          binding.pry
           expect(@item.errors.full_messages).to include("Delivery fee payment must be other than 1")
+        end
+        it '配送料の負担の選択は数字での入力が必須' do
+          @item.delivery_fee_payment_id = 'a'
+          @item.valid?
+          binding.pry
+          expect(@item.errors.full_messages).to include("Delivery fee payment is not a number")
         end
       end
     end
