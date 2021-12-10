@@ -20,7 +20,10 @@ RSpec.describe Item, type: :model do
           expect(@item.errors.full_messages).to include("Image can't be blank")
         end
         it '商品名が必須' do
-          
+          @item.item_name = ''
+          @item.valid?
+          binding.pry
+          expect(@item.errors.full_messages).to include("Item name can't be blank")
         end
         it '商品名が41文字以上では登録出来ない' do
           
