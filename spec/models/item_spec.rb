@@ -58,7 +58,14 @@ RSpec.describe Item, type: :model do
     end
 
     describe '商品情報(ActiveHash)' do
-      
+      context '商品出品が出来ない時' do
+        it 'カテゴリーの選択が必須' do
+          @item.category_id = ''
+          @item.valid?
+          binding.pry
+          expect(@item.errors.full_messages).to include("Category can't be blank")
+        end
+      end
     end
   end
 end
