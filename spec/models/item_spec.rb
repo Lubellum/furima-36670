@@ -117,8 +117,13 @@ RSpec.describe Item, type: :model do
         it '発送元の地域の選択は数字での入力が必須' do
           @item.ship_from_address_id = 'a'
           @item.valid?
-          binding.pry
           expect(@item.errors.full_messages).to include("Ship from address is not a number")
+        end
+        it '発送までの日数の選択が必須' do
+          @item.ship_to_duration_id = ''
+          @item.valid?
+          binding.pry
+          expect(@item.errors.full_messages).to include("Ship to duration can't be blank")
         end
       end
     end
