@@ -32,8 +32,13 @@ RSpec.describe Item, type: :model do
         it '販売価格が必須' do
           @item.price = ''
           @item.valid?
-          binding.pry
           expect(@item.errors.full_messages).to include("Price can't be blank")
+        end
+        it '販売価格は半角数字での入力が必須である(全角数字)' do
+          @item.price = '１２３４'
+          @item.valid?
+          binding.pry
+          expect(@item.errors.full_messages).to include("Price is not a number")
         end
       end
     end
