@@ -94,6 +94,12 @@ RSpec.describe Item, type: :model do
           @item.valid?
           expect(@item.errors.full_messages).to include("Delivery fee payment can't be blank")
         end
+        it '配送料の負担の選択はidが1以外の必要がある' do
+          @item.delivery_fee_payment_id = '1'
+          @item.valid?
+          binding.pry
+          expect(@item.errors.full_messages).to include("Delivery fee payment must be other than 1")
+        end
       end
     end
   end
