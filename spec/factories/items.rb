@@ -1,13 +1,13 @@
 FactoryBot.define do
   factory :item do
-    item_name               {  }
-    explanation             {  }
-    category_id             {  }
-    condition_id            {  }
-    delivery_fee_payment_id {  }
-    ship_from_address_id    {  }
-    ship_to_duration_id     {  }
-    price
+    item_name               { Faker::Lorem.characters(number: 40) }
+    explanation             { Faker::Lorem.characters(number: 1000) }
+    category_id             { 2 }
+    condition_id            { 2 }
+    delivery_fee_payment_id { 2 }
+    ship_from_address_id    { 2 }
+    ship_to_duration_id     { 2 }
+    price                   { Faker::Number.between(from: 300, to: 9999999) }
 
     after(:build) do |item|
       item.imgage.attach(io: File.open('public/images/test_image.png'), filename: 'test_image.png')
