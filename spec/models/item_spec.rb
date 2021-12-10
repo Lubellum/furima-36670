@@ -42,8 +42,13 @@ RSpec.describe Item, type: :model do
         it '販売価格は半角数字での入力が必須である(半角文字)' do
           @item.price = 'abcd'
           @item.valid?
-          binding.pry
           expect(@item.errors.full_messages).to include("Price is not a number")
+        end
+        it '販売価格は300円〜9,999,999円の範囲での入力が必須である(300円未満)' do
+          @item.price = '299'
+          @item.valid?
+          binding.pry
+          expect(@item.errors.full_messages).to include("Price must be greater than or equal to 300")
         end
       end
     end
