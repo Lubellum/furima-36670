@@ -67,8 +67,13 @@ RSpec.describe Item, type: :model do
         it 'カテゴリーの選択はidが1以外の必要がある' do
           @item.category_id = '1'
           @item.valid?
-          binding.pry
           expect(@item.errors.full_messages).to include("Category must be other than 1")
+        end
+        it 'カテゴリーの選択は数字での入力が必須' do
+          @item.category_id = 'a'
+          @item.valid?
+          binding.pry
+          expect(@item.errors.full_messages).to include("Category is not a number")
         end
       end
     end
