@@ -72,8 +72,13 @@ RSpec.describe Item, type: :model do
         it 'カテゴリーの選択は数字での入力が必須' do
           @item.category_id = 'a'
           @item.valid?
-          binding.pry
           expect(@item.errors.full_messages).to include("Category is not a number")
+        end
+        it '商品の状態の選択が必須' do
+          @item.condition_id = ''
+          @item.valid?
+          binding.pry
+          expect(@item.errors.full_messages).to include("Condition can't be blank")
         end
       end
     end
