@@ -25,7 +25,9 @@ RSpec.describe Item, type: :model do
           expect(@item.errors.full_messages).to include("Item name can't be blank")
         end
         it '商品の説明が必須' do
-          
+          @item.explanation = ''
+          @item.valid?
+          expect(@item.errors.full_messages).to include("Explanation can't be blank")
         end
       end
     end
