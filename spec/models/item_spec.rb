@@ -29,6 +29,12 @@ RSpec.describe Item, type: :model do
           @item.valid?
           expect(@item.errors.full_messages).to include("Explanation can't be blank")
         end
+        it '販売価格が必須' do
+          @item.price = ''
+          @item.valid?
+          binding.pry
+          expect(@item.errors.full_messages).to include("Price can't be blank")
+        end
       end
     end
 
