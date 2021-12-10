@@ -122,8 +122,13 @@ RSpec.describe Item, type: :model do
         it '発送までの日数の選択が必須' do
           @item.ship_to_duration_id = ''
           @item.valid?
-          binding.pry
           expect(@item.errors.full_messages).to include("Ship to duration can't be blank")
+        end
+        it '発送までの日数の選択はidが1以外の必要がある' do
+          @item.ship_to_duration_id = '1'
+          @item.valid?
+          binding.pry
+          expect(@item.errors.full_messages).to include("Ship to duration must be other than 1")
         end
       end
     end
