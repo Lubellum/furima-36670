@@ -14,7 +14,21 @@ RSpec.describe Item, type: :model do
       end
 
       context '商品出品が出来ない時' do
-        
+        it '商品画像が必須' do
+          
+        end
+        it '商品名が必須' do
+          
+        end
+        it '商品名が41文字以上では登録出来ない' do
+          
+        end
+        it '商品の説明が必須' do
+          
+        end
+        it '商品の説明が1001文字以上では登録出来ない' do
+          
+        end
       end
     end
 
