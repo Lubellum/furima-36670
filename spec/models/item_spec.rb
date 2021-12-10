@@ -102,8 +102,13 @@ RSpec.describe Item, type: :model do
         it '配送料の負担の選択は数字での入力が必須' do
           @item.delivery_fee_payment_id = 'a'
           @item.valid?
-          binding.pry
           expect(@item.errors.full_messages).to include("Delivery fee payment is not a number")
+        end
+        it '発送元の地域の選択が必須' do
+          @item.ship_from_address_id = ''
+          @item.valid?
+          binding.pry
+          expect(@item.errors.full_messages).to include("Ship from address can't be blank")
         end
       end
     end
