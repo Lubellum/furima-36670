@@ -87,8 +87,12 @@ RSpec.describe Item, type: :model do
         it '商品の状態の選択は数字での入力が必須' do
           @item.condition_id = 'a'
           @item.valid?
-          binding.pry
           expect(@item.errors.full_messages).to include("Condition is not a number")
+        end
+        it '配送料の負担の選択が必須' do
+          @item.delivery_fee_payment_id = ''
+          @item.valid?
+          expect(@item.errors.full_messages).to include("Delivery fee payment can't be blank")
         end
       end
     end
