@@ -41,7 +41,7 @@
 
 
 
-## purchase＿records テーブル
+## purchase_records テーブル
 
 | Column                  | Type       | Options                        |
 | ----------------------- | ---------- | ------------------------------ |
