@@ -1,0 +1,2 @@
+class MailingAddressesController < ApplicationController
+end
