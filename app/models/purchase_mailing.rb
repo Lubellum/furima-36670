@@ -15,6 +15,5 @@ class PurchaseMailing
   def save
     purchase = PurchaseRecord.create(user_id: user_id, item_id: item_id)
     MailingAddress.create(postal_code: postal_code, ship_from_address_id: ship_from_address_id, municipalities: municipalities, street_number: street_number,
-                       building_name: building_name, telephone_number: telephone_number, user_id: purchase.id, item_id: purchase.id)
-  end
+                       building_name: building_name, telephone_number: telephone_number, purchase_id: purchase.id)
 end
