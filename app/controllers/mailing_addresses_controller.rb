@@ -1,8 +1,5 @@
 class MailingAddressesController < ApplicationController
   def index
-  end
-
-  def new
     @purchase_mailing = PurchaseMailing.new
   end
 
