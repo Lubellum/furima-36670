@@ -7,6 +7,6 @@ FactoryBot.define do
     municipalities       { address.kanji }
     street_number        { address.kanji }
     building_name        { 'マルコポーロ333' }
-    telephone_number     { Faker::Number.between(from: 0_000_000_000, to: 99_999_999_999) }
+    telephone_number     { Faker::Number.between(from: 1_000_000_000, to: 99_999_999_999) }
   end
 end
