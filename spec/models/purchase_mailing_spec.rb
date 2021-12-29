@@ -98,8 +98,12 @@ RSpec.describe PurchaseMailing, type: :model do
       it 'userが紐付いていないと購入出来ない' do
         @purchase_mailing.user_id = nil
         @purchase_mailing.valid?
-        binding.pry
         expect(@purchase_mailing.errors.full_messages).to include("User can't be blank")
+      end
+      it 'itemが紐付いていないと購入出来ない' do
+        @purchase_mailing.item_id = nil
+        @purchase_mailing.valid?
+        expect(@purchase_mailing.errors.full_messages).to include("Item can't be blank")
       end
     end
   end
