@@ -78,6 +78,11 @@ RSpec.describe PurchaseMailing, type: :model do
       it '電話番号は10桁〜11桁の必要がある(9桁)' do
         @purchase_mailing.telephone_number = '123456789'
         @purchase_mailing.valid?
+        expect(@purchase_mailing.errors.full_messages).to include("Telephone number is invalid")
+      end
+      it '電話番号は10桁〜11桁の必要がある(12桁)' do
+        @purchase_mailing.telephone_number = '123456789012'
+        @purchase_mailing.valid?
         binding.pry
         expect(@purchase_mailing.errors.full_messages).to include("Telephone number is invalid")
       end
