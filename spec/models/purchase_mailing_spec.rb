@@ -5,7 +5,7 @@ RSpec.describe PurchaseMailing, type: :model do
     user = FactoryBot.create(:user)
     item = FactoryBot.create(:item)
     @purchase_mailing = FactoryBot.build(:purchase_mailing, user_id: user.id, item_id: item.id)
-    sleep 0.01
+    sleep 0.1
   end
 
   describe '商品購入' do
