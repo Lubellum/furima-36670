@@ -48,8 +48,13 @@ RSpec.describe PurchaseMailing, type: :model do
       it '都道府県の選択が必須' do
         @purchase_mailing.ship_from_address_id = ''
         @purchase_mailing.valid?
-        binding.pry
         expect(@purchase_mailing.errors.full_messages).to include("Ship from address can't be blank")
+      end
+      it '都道府県の選択はidが1以外の必要がある' do
+        @purchase_mailing.ship_from_address_id = '1'
+        @purchase_mailing.valid?
+        binding.pry
+        expect(@purchase_mailing.errors.full_messages).to include('Ship from address must be other than 1')
       end
     end
   end
