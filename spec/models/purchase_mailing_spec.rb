@@ -19,7 +19,12 @@ RSpec.describe PurchaseMailing, type: :model do
     end
 
     context '商品購入が出来ない時' do
-      
+      it '郵便番号が必須' do
+        @purchase_mailing.postal_code = ''
+        @purchase_mailing.valid?
+        binding.pry
+        expect(@purchase_mailing.errors.full_messages).to include("Postal code can't be blank")
+      end
     end
   end
 end
