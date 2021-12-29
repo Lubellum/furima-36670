@@ -88,6 +88,11 @@ RSpec.describe PurchaseMailing, type: :model do
       it '電話番号は半角数字の必要がある(全角数字)' do
         @purchase_mailing.telephone_number = '１２３４５６７８９０'
         @purchase_mailing.valid?
+        expect(@purchase_mailing.errors.full_messages).to include("Telephone number is invalid")
+      end
+      it '電話番号は半角数字の必要がある(全角数字)' do
+        @purchase_mailing.telephone_number = 'abcdefghij'
+        @purchase_mailing.valid?
         binding.pry
         expect(@purchase_mailing.errors.full_messages).to include("Telephone number is invalid")
       end
