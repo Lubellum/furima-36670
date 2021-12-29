@@ -22,8 +22,13 @@ RSpec.describe PurchaseMailing, type: :model do
       it '郵便番号が必須' do
         @purchase_mailing.postal_code = ''
         @purchase_mailing.valid?
-        binding.pry
         expect(@purchase_mailing.errors.full_messages).to include("Postal code can't be blank")
+      end
+      it '郵便番号にはハイフン(-)が必須' do
+        @purchase_mailing.postal_code = '1234567'
+        @purchase_mailing.valid?
+        binding.pry
+        expect(@purchase_mailing.errors.full_messages).to include("Postal code is invalid. Include hyphen(-)")
       end
     end
   end
