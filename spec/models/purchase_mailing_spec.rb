@@ -27,6 +27,11 @@ RSpec.describe PurchaseMailing, type: :model do
       it '郵便番号にはハイフン(-)が必須' do
         @purchase_mailing.postal_code = '1234567'
         @purchase_mailing.valid?
+        expect(@purchase_mailing.errors.full_messages).to include("Postal code is invalid. Include hyphen(-)")
+      end
+      it '郵便番号は半角文字の必要がある' do
+        @purchase_mailing.postal_code = '１２３-４５６７'
+        @purchase_mailing.valid?
         binding.pry
         expect(@purchase_mailing.errors.full_messages).to include("Postal code is invalid. Include hyphen(-)")
       end
