@@ -43,8 +43,13 @@ RSpec.describe PurchaseMailing, type: :model do
       it '郵便番号は「数字3桁-数字4桁」の必要がある(3桁-5桁)' do
         @purchase_mailing.postal_code = '123-45678'
         @purchase_mailing.valid?
-        binding.pry
         expect(@purchase_mailing.errors.full_messages).to include("Postal code is invalid. Include hyphen(-)")
+      end
+      it '都道府県の選択が必須' do
+        @purchase_mailing.ship_from_address_id = ''
+        @purchase_mailing.valid?
+        binding.pry
+        expect(@purchase_mailing.errors.full_messages).to include("Ship from address can't be blank")
       end
     end
   end
