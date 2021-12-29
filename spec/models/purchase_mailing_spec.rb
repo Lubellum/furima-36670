@@ -68,8 +68,13 @@ RSpec.describe PurchaseMailing, type: :model do
       it '番地が必須' do
         @purchase_mailing.street_number = ''
         @purchase_mailing.valid?
-        binding.pry
         expect(@purchase_mailing.errors.full_messages).to include("Street number can't be blank")
+      end
+      it '電話番号が必須' do
+        @purchase_mailing.telephone_number = ''
+        @purchase_mailing.valid?
+        binding.pry
+        expect(@purchase_mailing.errors.full_messages).to include("Telephone number can't be blank")
       end
     end
   end
