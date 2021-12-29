@@ -93,8 +93,13 @@ RSpec.describe PurchaseMailing, type: :model do
       it '電話番号は半角数字の必要がある(全角数字)' do
         @purchase_mailing.telephone_number = 'abcdefghij'
         @purchase_mailing.valid?
-        binding.pry
         expect(@purchase_mailing.errors.full_messages).to include("Telephone number is invalid")
+      end
+      it 'userが紐付いていないと購入出来ない' do
+        @purchase_mailing.user_id = nil
+        @purchase_mailing.valid?
+        binding.pry
+        expect(@purchase_mailing.errors.full_messages).to include("User can't be blank")
       end
     end
   end
