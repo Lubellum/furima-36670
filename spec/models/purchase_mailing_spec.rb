@@ -58,8 +58,13 @@ RSpec.describe PurchaseMailing, type: :model do
       it '都道府県の選択は数字での入力が必須' do
         @purchase_mailing.ship_from_address_id = 'a'
         @purchase_mailing.valid?
-        binding.pry
         expect(@purchase_mailing.errors.full_messages).to include('Ship from address is not a number')
+      end
+      it '市区町村が必須' do
+        @purchase_mailing.municipalities = ''
+        @purchase_mailing.valid?
+        binding.pry
+        expect(@purchase_mailing.errors.full_messages).to include("Municipalities can't be blank")
       end
     end
   end
