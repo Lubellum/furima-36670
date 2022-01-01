@@ -4,6 +4,7 @@ class MailingAddressesController < ApplicationController
   end
 
   def create
+    @item = Item.find(params[:item_id])
     @purchase_mailing = PurchaseMailing.new(purchase_mailing_params)
     if @purchase_mailing.valid?
       @purchase_mailing.save
@@ -15,6 +16,6 @@ class MailingAddressesController < ApplicationController
 
   private
   def purchase_mailing_params
-    params.require(:purchase_mailing).permit(:postal_code, :ship_from_address_id, :municipalities, :street_number, :building_name, :telephone_number).merge(user_id: current_user.id, item_id: @item_id)
+    params.require(:purchase_mailing).permit(:postal_code, :ship_from_address_id, :municipalities, :street_number, :building_name, :telephone_number).merge(user_id: current_user.id, item_id: @item.id)
   end
 end
