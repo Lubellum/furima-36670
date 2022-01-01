@@ -8,6 +8,7 @@ class CreateMailingAddresses < ActiveRecord::Migration[6.0]
       t.string     :building_name
       t.string     :telephone_number     , null: false
       t.references :purchase_record      , null: false, foreign_key: true
+      
       t.timestamps
     end
   end
