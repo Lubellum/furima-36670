@@ -10,6 +10,7 @@ class PurchaseMailing
     validates :telephone_number     , format: {with: /\A[0-9]{10,11}\z/}
     validates :user_id
     validates :item_id
+    validates :token
   end
 
   def save
