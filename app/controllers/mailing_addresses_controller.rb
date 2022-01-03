@@ -16,6 +16,6 @@ class MailingAddressesController < ApplicationController
 
   private
   def purchase_mailing_params
-    params.require(:purchase_mailing).permit(:postal_code, :ship_from_address_id, :municipalities, :street_number, :building_name, :telephone_number).merge(user_id: current_user.id, item_id: @item.id)
+    params.require(:purchase_mailing).permit(:postal_code, :ship_from_address_id, :municipalities, :street_number, :building_name, :telephone_number).merge(user_id: current_user.id, item_id: @item.id, token: params[:token])
   end
 end
