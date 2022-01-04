@@ -1,11 +1,11 @@
 class MailingAddressesController < ApplicationController
+  before_action :set_item, only: [:index, :create]
+
   def index
-    @item = Item.find(params[:item_id])
     @purchase_mailing = PurchaseMailing.new
   end
 
   def create
-    @item = Item.find(params[:item_id])
     @purchase_mailing = PurchaseMailing.new(purchase_mailing_params)
     if @purchase_mailing.valid?
       pay_item
@@ -22,6 +22,10 @@ class MailingAddressesController < ApplicationController
     params.require(:purchase_mailing).permit(:postal_code, :ship_from_address_id, :municipalities, :street_number, :building_name, :telephone_number).merge(
       user_id: current_user.id, item_id: @item.id, token: params[:token]
     )
+  end
+
+  def set_item
+    @item = Item.find(params[:item_id])
   end
 
   def pay_item
