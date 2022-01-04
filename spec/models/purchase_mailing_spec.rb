@@ -10,7 +10,7 @@ RSpec.describe PurchaseMailing, type: :model do
 
   describe '商品購入' do
     context '商品購入が出来る時' do
-      it '郵便番号、都道府県、市区町村、番地、建物名、電話番号があれば購入が出来る' do
+      it '郵便番号、都道府県、市区町村、番地、建物名、電話番号、tokenがあれば購入が出来る' do
         expect(@purchase_mailing).to be_valid
       end
       it '建物名が無くても購入できる' do
@@ -104,6 +104,11 @@ RSpec.describe PurchaseMailing, type: :model do
         @purchase_mailing.item_id = nil
         @purchase_mailing.valid?
         expect(@purchase_mailing.errors.full_messages).to include("Item can't be blank")
+      end
+      it 'tokenが無いと購入出来ない' do
+        @purchase_mailing.token = nil
+        @purchase_mailing.valid?
+        expect(@purchase_mailing.errors.full_messages).to include("Token can't be blank")
       end
     end
   end
