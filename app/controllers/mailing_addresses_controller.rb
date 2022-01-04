@@ -17,15 +17,18 @@ class MailingAddressesController < ApplicationController
   end
 
   private
+
   def purchase_mailing_params
-    params.require(:purchase_mailing).permit(:postal_code, :ship_from_address_id, :municipalities, :street_number, :building_name, :telephone_number).merge(user_id: current_user.id, item_id: @item.id, token: params[:token])
+    params.require(:purchase_mailing).permit(:postal_code, :ship_from_address_id, :municipalities, :street_number, :building_name, :telephone_number).merge(
+      user_id: current_user.id, item_id: @item.id, token: params[:token]
+    )
   end
 
   def pay_item
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
       amount: purchase_mailing_params[:price],
-      card:   purchase_mailing_params[:token],
+      card: purchase_mailing_params[:token],
       currency: 'jpy'
     )
   end
