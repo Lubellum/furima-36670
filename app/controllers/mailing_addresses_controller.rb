@@ -22,7 +22,7 @@ class MailingAddressesController < ApplicationController
   end
 
   def pay_item
-    Payjp.api_key = "秘密鍵を記述"
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
     Payjp::Charge.create(
       amount: purchase_mailing_params[:price],
       card:   purchase_mailing_params[:token],
