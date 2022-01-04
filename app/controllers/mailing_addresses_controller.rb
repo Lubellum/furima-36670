@@ -31,7 +31,7 @@ class MailingAddressesController < ApplicationController
   def pay_item
     Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
-      amount: purchase_mailing_params[:price],
+      amount: @item.price,
       card: purchase_mailing_params[:token],
       currency: 'jpy'
     )
