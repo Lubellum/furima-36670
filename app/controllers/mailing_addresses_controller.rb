@@ -3,10 +3,10 @@ class MailingAddressesController < ApplicationController
   before_action :set_item, only: [:index, :create]
 
   def index
-    if @item.purchase_record.nil?
-      @purchase_mailing = PurchaseMailing.new
-    else
+    if current_user.id == @item.user_id
       redirect_to root_path
+    else @item.purchase_record.nil?
+      @purchase_mailing = PurchaseMailing.new
     end
   end
 
