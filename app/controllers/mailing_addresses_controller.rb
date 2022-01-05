@@ -3,9 +3,9 @@ class MailingAddressesController < ApplicationController
   before_action :set_item, only: [:index, :create]
 
   def index
-    if current_user.id == @item.user_id
+    if current_user.id == @item.user_id || @item.purchase_record
       redirect_to root_path
-    else @item.purchase_record.nil?
+    else
       @purchase_mailing = PurchaseMailing.new
     end
   end
