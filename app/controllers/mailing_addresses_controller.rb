@@ -2,7 +2,11 @@ class MailingAddressesController < ApplicationController
   before_action :set_item, only: [:index, :create]
 
   def index
-    @purchase_mailing = PurchaseMailing.new
+    if @item.purchase_record.nil?
+      @purchase_mailing = PurchaseMailing.new
+    else
+      redirect_to root_path
+    end
   end
 
   def create
